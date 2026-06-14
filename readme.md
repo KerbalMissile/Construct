@@ -1,8 +1,8 @@
-## AnkerMake M5 Firmware
+## Construct: AnkerMake M5 Firmware
 
-AnkerMake M5 Firmware is a fork of version 2.0.x bugfix of the open-source Marlin Firmware adapted to the AnkerMake M5 high-speed printer. 
+Construct is a fork of the AnkerMake M5 Firmware
 
-### Main features of the AnkerMake M5 Firmware
+### Main features of the Construct firmware:
 
   1. 5× high-speed printing adaptation and optimization.
   2. Automatic leveling and automatic Z-offset calibration.
@@ -27,7 +27,7 @@ AnkerMake M5 Firmware is a fork of version 2.0.x bugfix of the open-source Marli
      4. Compile Marlin.
 ### License
 
-AnkerMake's firmware is licensed under a [General Public License](https://github.com/MarlinFirmware/Marlin/blob/bugfix-2.1.x/LICENSE). The GPL comes with both rights and obligations. The GPL ensures that if you use any part of this software in any way (even behind a web server), your software must be released under the same license.
+Construct's firmware is licensed under a [General Public License](https://github.com/MarlinFirmware/Marlin/blob/bugfix-2.1.x/LICENSE). The GPL comes with both rights and obligations. The GPL ensures that if you use any part of this software in any way (even behind a web server), your software must be released under the same license.
 
 **About Marlin License:**
 
