@@ -2,6 +2,8 @@
 
 Construct is a fork of the AnkerMake M5 Firmware
 
+---
+
 ### Main features of the Construct firmware:
 
   1. 5× high-speed printing adaptation and optimization.
@@ -9,6 +11,26 @@ Construct is a fork of the AnkerMake M5 Firmware
   3. Adapted the DMA data receiving and transmitting modes, driven by the Marlin Arduino serial port.
   4. G-code packet communication and error correction mechanisms between the upper computer and Marlin system.
   5. Local AI compatibility when monitoring AnkerMake prints.
+
+---
+
+### Short Term Plan
+
+1. Can it be put on the printer and ran safely and it works
+2. If successful, edit it so the UI on the printer's screen is more responsive and less buggy and obnoxious
+3. If successful, rebrand to Construct
+4. UI QoL features
+5. TBD
+
+---
+
+### Long Term Plan
+
+1. Finish Short Term
+2. Good documentation on how to download, edit, and compile it
+3. TBD
+
+---
 
 ### Compiling
 
@@ -25,6 +47,8 @@ Construct is a fork of the AnkerMake M5 Firmware
      3. Unzip the framework-arduinosttm32.7z to the C:\Users\xxx\.platformio\packages directory.
      
      4. Compile Marlin.
+---
+
 ### License
 
 Construct's firmware is licensed under a [General Public License](https://github.com/MarlinFirmware/Marlin/blob/bugfix-2.1.x/LICENSE). The GPL comes with both rights and obligations. The GPL ensures that if you use any part of this software in any way (even behind a web server), your software must be released under the same license.
