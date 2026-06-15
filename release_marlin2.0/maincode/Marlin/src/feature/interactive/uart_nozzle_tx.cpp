@@ -28,6 +28,8 @@ extern "C"
 #include "uart_nozzle_rx.h"
 
 #include <stdint.h>
+#define SERIAL_SEND_BUFFER(serial, buffer, len) \
+  do { for(size_t _i = 0; _i < (len); _i++) (serial).write(((uint8_t*)(buffer))[_i]); } while(0)
 
 #include "gcp.h"
 #include "gcp_parser.h"
@@ -51,7 +53,7 @@ extern "C"
                            content,
                            2);
 
-        MYSERIAL3.send((uint8_t *)gcp_msg, len);
+        SERIAL_SEND_BUFFER(MYSERIAL3, gcp_msg, len);
     }
 
     void uart_nozzle_tx_hwsw_ver_get(void)
@@ -68,7 +70,7 @@ extern "C"
                            0,
                            0);
 
-        MYSERIAL3.send((uint8_t *)gcp_msg, len);
+        SERIAL_SEND_BUFFER(MYSERIAL3, gcp_msg, len);
     }
 
     void uart_nozzle_tx_single_data(uint8_t cmd, uint8_t dat)
@@ -86,7 +88,7 @@ extern "C"
                            &context,
                            1);
 
-        MYSERIAL3.send((uint8_t *)gcp_msg, len);
+        SERIAL_SEND_BUFFER(MYSERIAL3, gcp_msg, len);
     }
 
     void uart_nozzle_tx_multi_data(uint8_t cmd, uint8_t *buf, uint16_t size)
@@ -103,7 +105,7 @@ extern "C"
                            buf,
                            size);
 
-        MYSERIAL3.send((uint8_t *)gcp_msg, len);
+        SERIAL_SEND_BUFFER(MYSERIAL3, gcp_msg, len);
     }
 
     void uart_nozzle_tx_show_adc_value_on()
@@ -120,7 +122,7 @@ extern "C"
                            0,
                            0);
 
-        MYSERIAL3.send((uint8_t *)gcp_msg, len);
+        SERIAL_SEND_BUFFER(MYSERIAL3, gcp_msg, len);
     }
 
     void uart_nozzle_tx_show_adc_value_off()
@@ -137,7 +139,7 @@ extern "C"
                            0,
                            0);
 
-        MYSERIAL3.send((uint8_t *)gcp_msg, len);
+        SERIAL_SEND_BUFFER(MYSERIAL3, gcp_msg, len);
     }
 
     void uart_nozzle_tx_pid_autotune(uint16_t temp, uint16_t ncycles)
@@ -160,7 +162,7 @@ extern "C"
                            content,
                            4);
 
-        MYSERIAL3.send((uint8_t *)gcp_msg, len);
+        SERIAL_SEND_BUFFER(MYSERIAL3, gcp_msg, len);
     }
 
     // Get strain gauge readings
@@ -178,7 +180,7 @@ extern "C"
                            0,
                            0);
 
-        MYSERIAL3.send((uint8_t *)gcp_msg, len);
+        SERIAL_SEND_BUFFER(MYSERIAL3, gcp_msg, len);
     }
 
     // set probe leveling value
@@ -196,7 +198,7 @@ extern "C"
                            (uint8_t *)&val,
                            2);
 
-        MYSERIAL3.send((uint8_t *)gcp_msg, len);
+        SERIAL_SEND_BUFFER(MYSERIAL3, gcp_msg, len);
     }
 
     // get probe leveling value
@@ -214,7 +216,7 @@ extern "C"
                            0,
                            0);
 
-        MYSERIAL3.send((uint8_t *)gcp_msg, len);
+        SERIAL_SEND_BUFFER(MYSERIAL3, gcp_msg, len);
     }
 
     void uart_nozzle_tx_auto_offset_start(void)
@@ -231,7 +233,7 @@ extern "C"
                            0,
                            0);
 
-        MYSERIAL3.send((uint8_t *)gcp_msg, len);
+        SERIAL_SEND_BUFFER(MYSERIAL3, gcp_msg, len);
     }
 
     void uart_nozzle_tx_point_type(uint8_t type, uint8_t point) // Notify the nozzle board of the position under different commands.

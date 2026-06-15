@@ -25,6 +25,8 @@ extern "C"
 #define PACK_BE_32(p) (*(p + 3) | *(p + 2) << 8 | *(p + 1) << 16 | *(p) << 24)
 #define PACK_LE_16(p) (*(p + 1) << 8 | *(p))
 #define PACK_BE_16(p) (*(p + 1) | *(p) << 8)
+#define SERIAL_SEND_BUFFER(serial, buffer, len) \
+  do { for(size_t _i = 0; _i < (len); _i++) (serial).write(((uint8_t*)(buffer))[_i]); } while(0)
 
     typedef struct
     {
@@ -111,7 +113,7 @@ extern "C"
                            GCP_CMD_20_MSG_GET,
                            content,
                            5);
-        MYSERIAL3.send((uint8_t *)gcp_msg, len);
+        SERIAL_SEND_BUFFER(MYSERIAL3, gcp_msg, len);
         uart_nozzle_info.tx_cnt += 1;
     }
 
@@ -307,7 +309,7 @@ extern "C"
 
         case GCP_CMD_29_SN_WRITE:
             memcpy(str, "ok\n", 4);
-            MYSERIAL2.send((uint8_t *)str, 4);
+            SERIAL_SEND_BUFFER(MYSERIAL2, (uint8_t*)str, 4);
 
             MYSERIAL1.printLine("SN write ack\n");
             break;
@@ -316,7 +318,7 @@ extern "C"
             memcpy(str, "SN:", 4);
             strncat(str, (char *)&gcp_msg->content[0], 16);
             str[19] = '\n';
-            MYSERIAL2.send((uint8_t *)str, sizeof(str));
+            SERIAL_SEND_BUFFER(MYSERIAL2, (uint8_t*)str, sizeof(str));
 
             MYSERIAL1.printLine("SN read ack, %s\n", str);
             break;
@@ -524,7 +526,7 @@ extern "C"
 
         soft_timer_start(&uart_nozzle_rx.soft_timer);
 
-        uart_rx_isr_callback[3] = uart_nozzle_packet_parse_isr;
+        //uart_rx_isr_callback[3] = uart_nozzle_packet_parse_isr;  // TODO: ISR callback not available in current Marlin
 
         uart_nozzle_rx.start_ms = getCurrentMillis();
 
